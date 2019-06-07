@@ -48,10 +48,13 @@ public class Controller {
     }
 
     public void receiveMessage(String message){
-        /*Todo
-
-         */
+        user.updateMessagePane(message);
     }
 
+    //Takes the message from the view and sends it to the model to be sent to the
+    //other users
+    public void sendMessage(String message){
+        model.sendMessage(message);
+    }
 
 }

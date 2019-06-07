@@ -3,7 +3,12 @@ import java.util.List;
 public class Model {
     private List<Controller> userList;
 
-    private void sendMessage(){
+    public void sendMessage(String message){
+        for (Controller user:userList
+             ) {
+            user.receiveMessage(message);
+        }
+
         /*
         TODO
         Add code that will cycle through the list of Controller objects

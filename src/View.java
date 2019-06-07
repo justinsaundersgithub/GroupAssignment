@@ -16,7 +16,8 @@ public class View {
 
     public void errorWindow(String message){
         /*Todo
-
+        This will be a generic error message window that will pop up when something
+        goes wrong. It will display whatever message is passed to it.
          */
     }
 
