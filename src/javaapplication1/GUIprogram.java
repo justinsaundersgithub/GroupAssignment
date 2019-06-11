@@ -352,6 +352,7 @@ try {
 
         pwPF.setBackground(new java.awt.Color(163, 163, 181));
         pwPF.setForeground(new java.awt.Color(55, 55, 71));
+        pwPF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 124, 0)));
         pwPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwPFActionPerformed(evt);
@@ -365,6 +366,7 @@ try {
 
         vpwPF.setBackground(new java.awt.Color(163, 163, 181));
         vpwPF.setForeground(new java.awt.Color(55, 55, 71));
+        vpwPF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 124, 0)));
         vpwPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vpwPFActionPerformed(evt);
@@ -385,6 +387,11 @@ try {
         cancelReg.setBackground(new java.awt.Color(163, 163, 181));
         cancelReg.setForeground(new java.awt.Color(55, 55, 71));
         cancelReg.setText("CANCEL");
+        cancelReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelRegActionPerformed(evt);
+            }
+        });
         jRegistration.getContentPane().add(cancelReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, 40));
 
         backgroundRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/pictures/background_simple_smaller.png"))); // NOI18N
@@ -392,6 +399,7 @@ try {
 
         jLoginFail.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jRecovery.setSize(backgroundRec.getMinimumSize());
         jRecovery.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleRecover.setBackground(new java.awt.Color(55, 55, 71));
@@ -435,7 +443,6 @@ try {
         backgroundRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/pictures/background_simple_smaller.png"))); // NOI18N
         jRecovery.getContentPane().add(backgroundRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        jAccountSettings.setPreferredSize(new java.awt.Dimension(381, 672));
         jAccountSettings.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         changePasswordB.setBackground(new java.awt.Color(163, 163, 181));
@@ -490,28 +497,33 @@ try {
     }// </editor-fold>//GEN-END:initComponents
 
     private void roomsBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomsBActionPerformed
-       //userControl.chatRooms();
-       
+//       userControl.chatRooms();
+       jHomeScreen.pack();
        jHomeScreen.setVisible(true);
     }//GEN-LAST:event_roomsBActionPerformed
 
     private void asBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asBActionPerformed
         jHomeScreen.setVisible(false);
-        jAccountSettings.setVisible(true);           //userControl.accountSetting();
+        jAccountSettings.pack();
+        jAccountSettings.setVisible(true);           
+        //userControl.accountSetting();
     }//GEN-LAST:event_asBActionPerformed
 
     private void clickHereBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickHereBActionPerformed
         jLogin.setVisible(false);
+        jRegistration.pack();
         jRegistration.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_clickHereBActionPerformed
 
     private void onetooneBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onetooneBActionPerformed
         jHomeScreen.setVisible(false);
+        jOnetoOne.pack();
         jOnetoOne.setVisible(true);   
     }//GEN-LAST:event_onetooneBActionPerformed
 
     private void backB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backB2ActionPerformed
        jOnetoOne.setVisible(false);
+       jHomeScreen.pack();
         jHomeScreen.setVisible(true);           // TODO add your handling code here:
     }//GEN-LAST:event_backB2ActionPerformed
 
@@ -535,6 +547,7 @@ try {
 //      LoginWindow checkLogin = new LoginWindow();
 //        if(checkLogin.credentials()==true){ 
         jLogin.setVisible(false);
+        jHomeScreen.pack();
         jHomeScreen.setVisible(true);
 //        }
 //       else{
@@ -546,21 +559,25 @@ try {
 
     private void forgotunamepwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotunamepwdActionPerformed
         jLogin.setVisible(false);
+        jRecovery.pack();   
         jRecovery.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_forgotunamepwdActionPerformed
 
     private void backBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBActionPerformed
         jHomeScreen.setVisible(false);
+        jLogin.pack();
         jLogin.setVisible(true);           // TODO add your handling code here:
     }//GEN-LAST:event_backBActionPerformed
 
     private void cancelRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRecActionPerformed
         jRecovery.setVisible(false);
+        jLogin.pack();
         jLogin.setVisible(true);           // TODO add your handling code here:
     }//GEN-LAST:event_cancelRecActionPerformed
 
     private void backBASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBASActionPerformed
         jAccountSettings.setVisible(false);
+        jHomeScreen.pack();
         jHomeScreen.setVisible(true);
     }//GEN-LAST:event_backBASActionPerformed
 
@@ -584,7 +601,11 @@ try {
     }//GEN-LAST:event_submitBRecActionPerformed
 
     private void regBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBActionPerformed
-        registerPressed(true);       
+        registerPressed(true);
+        
+        JOptionPane.showMessageDialog(this,"Emailed Registration Information\nCheck your email for username and password", 
+                        "Registration Email Sent", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_regBActionPerformed
 
     private void portTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portTFActionPerformed
@@ -606,6 +627,12 @@ try {
                     "Success!" , JOptionPane.INFORMATION_MESSAGE);
 //        }
     }//GEN-LAST:event_connectionButtonActionPerformed
+
+    private void cancelRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegActionPerformed
+        jRegistration.setVisible(false);
+        jLogin.pack();
+        jLogin.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelRegActionPerformed
 
 
     public static void main(String args[]) {
